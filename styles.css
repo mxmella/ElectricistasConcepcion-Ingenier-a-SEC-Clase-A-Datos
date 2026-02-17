@@ -1,0 +1,517 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { background-color: #050505; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color); /* Texto oscuro para lectura principal */
+    background-color: var(--primary-color); /* Blanco (Fondo principal) */
+    animation: fadeIn 1.5s ease-in; /* Animación de entrada suave */
+}
+
+/* Variables de color */
+:root {
+    --primary-color: #050505; /* Negro Suave (Más elegante) */
+    --secondary-color: #121212; /* Gris Mate para tarjetas */
+    --accent-color: #FFC107;  /* Ámbar Ingeniería (Menos amarillo chillón) */
+    --support-line-color: #00A8E8; /* Azul Técnico (Menos neón) */
+    --title-color: #F5F5F5; /* Blanco Humo */
+    --text-color: #E0E0E0; /* Gris Claro para lectura descansada */
+    --white: #FFFFFF; /* Blanco Puro */
+}
+
+/* Utilidades */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--title-color);
+}
+
+/* Header */
+#main-header {
+    background: var(--primary-color); /* Fondo blanco */
+    color: var(--title-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #222; /* Borde sutil para separar */
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre icono y texto */
+}
+
+.logo-img {
+    height: 50px; /* Ajuste de altura para el header */
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.logo h1 span {
+    color: var(--accent-color);
+    font-weight: 900;
+}
+
+.tagline {
+    font-size: 0.75rem;
+    color: #ccc;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+.btn-nav {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Menu (hidden on desktop) */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Above the nav panel */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--title-color);
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: none;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+}
+
+/* Animación de aparición en scroll */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-element.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Servicios */
+#servicios { background-color: var(--primary-color); }
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: var(--secondary-color); /* Tarjeta blanca */
+    padding: 30px;
+    border: 1px solid #222; /* Borde sutil */
+    border-radius: 20px; /* Esquinas más suaves */
+    text-align: left; /* Alineación más corporativa/tech */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Sombra más suave */
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.service-card h3 {
+    color: var(--title-color);
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: var(--text-color);
+}
+
+/* Contacto */
+.contact-info h3 { color: var(--title-color); }
+.contact-info p { color: var(--text-color); }
+
+#contacto {
+    background-color: var(--primary-color);
+}
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.business-card {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.contact-form {
+    margin-top: 140px;
+}
+
+.contact-form input, 
+.contact-form select, 
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #222; /* Borde más suave */
+    background: #111;
+    color: #FFF; /* Texto oscuro dentro de los inputs para legibilidad */
+    border-radius: 8px; /* Esquinas más suaves */
+}
+
+/* Sección Nosotros (Estilo Oscuro/Técnico) */
+#nosotros {
+    background-color: var(--secondary-color) !important;
+    color: var(--text-color);
+    position: relative;
+    border-top: none;
+}
+
+#nosotros .section-title {
+    color: var(--title-color);
+}
+
+.benefits-list li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.benefits-list i {
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
+/* Nueva Sección: Artículo Técnico */
+.tech-article {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-content h3 {
+    color: var(--title-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.article-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background: #000000;
+    color: #aaa;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px;
+    border-top: 1px solid #222;
+}
+
+/* Responsive Mobile */
+@media (max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    .hero h2 { font-size: 2rem; }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 70vw;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(26, 26, 26, 0.8); /* Gris oscuro con transparencia */
+        backdrop-filter: blur(10px); /* Efecto "Frosted Glass" */
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        padding-top: 5rem;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    }
+
+    nav.is-active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 20px 0;
+        width: 100%;
+        text-align: left;
+        padding: 0 30px; /* Añade espaciado lateral para un look más limpio */
+    }
+
+    /* Hamburger animation to 'X' */
+    .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
+    .hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+
+/* Botón Flotante WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366; /* Verde WhatsApp */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    z-index: 2000; /* Por encima de todo */
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #FFFFFF; /* Icono blanco */
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+    color: #FFFFFF;
+}
+
+/* Estilos Sección Mantenimiento Detallado */
+.maintenance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.maintenance-item {
+    background: var(--secondary-color);
+    padding: 25px;
+    border-radius: 15px; /* Esquinas más suaves */
+    border: 1px solid #222; /* Borde más suave */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.maintenance-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.maintenance-item h3 {
+    color: var(--title-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.maintenance-item h3 i {
+    color: var(--accent-color);
+}
+
+.maintenance-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.maintenance-item ul li {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    padding-left: 15px;
+    border-left: 2px solid var(--support-line-color); /* Línea decorativa lateral */
+}
+
+.maintenance-item ul li strong {
+    color: var(--title-color);
+}
+
+/* Bloque "Por qué elegirnos" */
+.why-choose-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    align-items: center;
+}
+
+.why-choose-text blockquote {
+    border-left: 4px solid var(--support-line-color);
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--title-color);
+    font-size: 1.1rem;
+    background: rgba(0, 229, 255, 0.05);
+    padding: 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.why-choose-text h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.benefits-box {
+    background: var(--secondary-color);
+    padding: 30px;
+    border-radius: 20px; /* Esquinas más suaves */
+    border: 1px solid #222; /* Borde más suave */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4); /* Sombra más suave */
+}
+
+.benefits-box h4 {
+    color: var(--title-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.sec-logo {
+    display: block;
+    height: 100px;
+    width: auto;
+    margin: 0 auto 30px; /* Centrado, con espacio inferior */
+    border-radius: 50%; /* Redondea la imagen para que sea un círculo */
+}
